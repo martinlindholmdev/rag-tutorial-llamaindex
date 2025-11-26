@@ -35,7 +35,7 @@ st.markdown("")
 st.markdown("""**Pusselfamiljens verktyg för vardagshjältar**  
 *Om barn med ADHD och autism och pusslet som förenklar livet*""")
 st.markdown("---")
-st.write("Ställ frågor till boken om vardagsstrategier för barn med ADHD eller autism.")
+st.write("💬 Fråga boken:")
 st.write("")
 
 if "messages" not in st.session_state:
