@@ -34,9 +34,10 @@ st.markdown("# 🧩 NPF-pusslet")
 st.markdown("")
 st.markdown("""**Pusselfamiljens verktyg för vardagshjältar**  
 *Om barn med ADHD och autism och pusslet som förenklar livet*""")
+st.write("")
+st.write("")
 st.write("💬 Fråga boken:")
 st.markdown("---")
-st.write("")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
