@@ -5,15 +5,6 @@ nest_asyncio.apply()
 import streamlit as st
 import os
 7   from llama_index.core import StorageContext, load_index_from_storage
-8
-9   # CSS för att minska mellanrum vid horisontella linjer
-10  st.markdown("""
-11  <style>
-12  hr {
-13      margin-top: 0rem !important;
-14  }
-15  </style>
-16  """, unsafe_allow_html=True)
 17
 18  if "OPENAI_API_KEY" in st.secrets:
     os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
@@ -45,7 +36,7 @@ st.markdown("""**Pusselfamiljens verktyg för vardagshjältar**
 *Om barn med ADHD och autism och pusslet som förenklar livet*""")
 st.write("")
 st.markdown("💬 **Fråga boken:**")
-st.markdown("---")
+st.markdown("<hr style='margin-top: 0.5rem; margin-bottom: 1rem;'>", unsafe_allow_html=True)
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
