@@ -1,125 +1,143 @@
 
-# 🧩 NPF-pusslet - RAG-applikation
+# 🧩 NPF-pusslet - RAG Application
 
-En AI-driven kunskapsassistent byggd med **Retrieval-Augmented Generation (RAG)** som svarar på frågor om boken "Pusselfamiljens verktyg för vardagshjältar" - om barn med ADHD, autism och pusslet som förenklar livet.
+![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
+![Streamlit](https://img.shields.io/badge/streamlit-1.28+-red.svg)
+![LlamaIndex](https://img.shields.io/badge/llamaindex-latest-orange.svg)
 
-## 🎯 Om projektet
+An AI-powered knowledge assistant built with **Retrieval-Augmented Generation (RAG)** that answers questions about the book "Pusselfamiljens verktyg för vardagshjältar" - about children with ADHD, autism, and the puzzle that simplifies life.
 
-Detta projekt startade som en övning från min mentor **Mats**, där jag fick lära mig grunderna i RAG med en enkel Jupyter Notebook. Jag utvecklade sedan konceptet till en fullfjädrad webbapplikation med Streamlit.
+## 🚀 Live Demo
 
-**Vad är RAG?**
-- **Retrieval:** Hämtar relevant information från dokumentet
-- **Augmented:** Förstärker AI:n med specifik kunskap
-- **Generation:** Genererar exakta svar baserade på källan
+Try it here: **[npf-pusslet.streamlit.app](https://npf-pusslet.streamlit.app/)**
 
-## 📁 Projektstruktur
+## 🎯 About the Project
+
+This project demonstrates the power of RAG (Retrieval-Augmented Generation) by building a knowledge assistant that can answer questions about a specific book with accuracy and source citations.
+
+**What is RAG?**
+- **Retrieval:** Fetches relevant information from the document
+- **Augmented:** Enhances the AI with specific knowledge
+- **Generation:** Generates accurate answers based on the source
+
+## 📁 Project Structure
 
 ```
 rag-tutorial-llamaindex/
-├── simple_rag_notebook-checkpoint.ipynb  # Original övning från Mats
-├── app.py                                 # Streamlit webbapp
-├── build_index.py                         # Script för att bygga index
-├── data/                                  # PDF/TXT/DOCX källor
-├── storage/                               # Vektorindex (genereras automatiskt)
-├── requirements.txt                       # Python-beroenden
-├── .gitignore                             # Git-undantag
-└── README.md                              # Denna fil
+├── simple_rag_notebook.ipynb             # Jupyter notebook implementation
+├── app.py                                 # Streamlit web app
+├── build_index.py                         # Script to build index
+├── data/                                  # PDF/TXT/DOCX sources
+├── storage/                               # Vector index (auto-generated)
+├── requirements.txt                       # Python dependencies
+├── .gitignore                             # Git exclusions
+└── README.md                              # This file
 ```
 
-## 🚀 Två sätt att använda projektet
+## 🚀 Two Ways to Use the Project
 
-### **1. Jupyter Notebook (Original övning)**
+### **1. Jupyter Notebook (Learning & Experimentation)**
 
-**Krav:**
-- Anaconda Navigator installerad
-- OpenAI API-nyckel ([skaffa här](https://platform.openai.com/launch))
-- Några dollar på OpenAI-kontot för tokens
-- Din kunskapskälla (PDF, TXT eller DOCX)
+**Requirements:**
+- Anaconda Navigator installed
+- OpenAI API key ([get one here](https://platform.openai.com/api-keys))
+- A few dollars in your OpenAI account for tokens
+- Your knowledge source (PDF, TXT, or DOCX)
 
-**Steg:**
-1. Installera **Anaconda Navigator** från [anaconda.com](https://www.anaconda.com/products/navigator)
-2. Skapa mapp `data/` och lägg din fil där
-3. Öppna Anaconda Navigator → Installera **Jupyter Labs**
-4. Starta Jupyter Labs
-5. Öppna `simple_rag_notebook-checkpoint.ipynb`
-6. Lägg till din OpenAI API-nyckel i cell [2]
-7. Kör cellerna steg för steg
+**Steps:**
+1. Install **Anaconda Navigator** from [anaconda.com](https://www.anaconda.com/products/navigator)
+2. Create a `data/` folder and place your file there
+3. Open Anaconda Navigator → Install **Jupyter Labs**
+4. Launch Jupyter Labs
+5. Open `simple_rag_notebook.ipynb`
+6. Add your OpenAI API key in cell [2]
+7. Run the cells step by step
 
-**⚠️ Notering:** Vektordatabasen byggs om vid varje körning (använder tokens). För produktion, använd persistent storage.
+**⚠️ Note:** The vector database is rebuilt on every run (uses tokens). For production, use persistent storage.
 
 ---
 
-### **2. Streamlit Webbapp (Deployment-klar)**
+### **2. Streamlit Web App (Production-Ready)**
 
-**Krav:**
+**Requirements:**
 - Python 3.8+
-- OpenAI API-nyckel
+- OpenAI API key
 
 **Installation:**
 ```bash
-# Klona repot
-git clone [ditt-repo-url]
+# Clone the repo
+git clone https://github.com/martinlindholmdev/rag-tutorial-llamaindex.git
 cd rag-tutorial-llamaindex
 
-# Installera dependencies
+# Install dependencies
 pip install -r requirements.txt
 
-# Lägg till API-nyckel
-# Skapa .streamlit/secrets.toml:
-# OPENAI_API_KEY = "din-nyckel-här"
+# Add API key - Create .streamlit/secrets.toml:
+mkdir -p .streamlit
+echo 'OPENAI_API_KEY = "sk-your-key-here"' > .streamlit/secrets.toml
 
-# Kör lokalt
+# Run locally
 streamlit run app.py
 ```
 
-**Deploy till Streamlit Cloud:**
-1. Pusha till GitHub
-2. Gå till [share.streamlit.io](https://share.streamlit.io)
-3. Anslut repot
-4. Lägg till `OPENAI_API_KEY` i Secrets
-5. Deployas automatiskt! 🎉
+**Deploy to Streamlit Cloud:**
+1. Push to GitHub
+2. Go to [share.streamlit.io](https://share.streamlit.io)
+3. Connect the repo
+4. Add `OPENAI_API_KEY` in Secrets
+5. Deploys automatically! 🎉
 
-## 🛠️ Teknisk Stack
+## 🛠️ Tech Stack
 
-| Komponent | Teknologi |
+| Component | Technology |
 |-----------|-----------|
 | **RAG Framework** | LlamaIndex |
 | **LLM** | OpenAI GPT-3.5-turbo |
 | **Frontend** | Streamlit |
-| **Vektorlagring** | Local Disk (SimplePersistStorage) |
+| **Vector Storage** | Local Disk (SimplePersistStorage) |
 | **Deployment** | Streamlit Cloud |
 
-## 📖 Hur det fungerar
+## 📖 How It Works
 
-1. **Indexering:** Dokumentet läses in och delas upp i "chunks"
-2. **Embeddings:** Varje chunk omvandlas till vektorer
-3. **Lagring:** Vektorindex sparas lokalt i `storage/`
-4. **Query:** Användarfråga matchas semantiskt mot index
-5. **Retrieval:** Relevanta chunks hämtas
-6. **Generation:** GPT genererar svar baserat på hämtad kontext
+1. **Indexing:** The document is loaded and split into "chunks"
+2. **Embeddings:** Each chunk is converted to vectors using OpenAI's embedding model
+3. **Storage:** Vector index is saved locally in `storage/`
+4. **Query:** User question is semantically matched against the index
+5. **Retrieval:** Most relevant chunks are fetched
+6. **Generation:** GPT generates an answer based on retrieved context with source citations
 
-## 🎓 Lärdomar
+## 🎓 Key Features
 
-- **RAG eliminerar AI-hallucinationer** genom att förankra svar i källor
-- **LlamaIndex förenklar RAG-utveckling** enormt (jämfört med att bygga från scratch)
-- **Persistent storage** är kritiskt för produktion (undvik onödiga token-kostnader)
-- **Streamlit** gör det extremt enkelt att deploya Python-appar
+- ✅ **Accurate answers** grounded in source material
+- ✅ **Source citations** for transparency
+- ✅ **Persistent storage** to avoid rebuilding index
+- ✅ **Simple deployment** with Streamlit Cloud
+- ✅ **Cost-efficient** token usage
 
-## 🙏 Tack till
+## 🎓 Lessons Learned
 
-**Mats** - för den perfekta introduktionen till RAG och LlamaIndex!
+- **RAG eliminates AI hallucinations** by grounding answers in sources
+- **LlamaIndex simplifies RAG development** enormously (compared to building from scratch)
+- **Persistent storage** is critical for production (avoid unnecessary token costs)
+- **Streamlit** makes it extremely easy to deploy Python apps
 
-## 📚 Resurser
+## 📚 Resources
 
 - [LlamaIndex Documentation](https://docs.llamaindex.ai/)
 - [Streamlit Documentation](https://docs.streamlit.io/)
-- [Vector Stores Guide](https://developers.llamaindex.ai/python/framework/module_guides/storing/vector_stores/)
+- [Vector Stores Guide](https://docs.llamaindex.ai/en/stable/module_guides/storing/vector_stores.html)
 - [OpenAI API Reference](https://platform.openai.com/docs)
 
-## 📝 Licens
+## 📬 Contact
 
-Detta är ett utbildningsprojekt. Använd och modifiera fritt!
+- **GitHub:** [@martinlindholmdev](https://github.com/martinlindholmdev)
+- **Email:** martin.lindholm.dev@gmail.com
+- **Live Demo:** [npf-pusslet.streamlit.app](https://npf-pusslet.streamlit.app/)
+
+## 📝 License
+
+This is an educational project. Feel free to use and modify!
 
 ---
 
-**Byggt med ❤️ och AI-magi 🤖**
+**Built with ❤️ and AI magic 🤖**
