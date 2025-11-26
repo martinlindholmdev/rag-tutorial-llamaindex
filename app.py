@@ -23,11 +23,6 @@ Svara ENDAST baserat på bokens innehåll. Om du inte hittar svaret i boken, sä
 
 st.set_page_config(page_title="NPF-pusslet", page_icon="🧩", layout="centered")
 
-# Sidebar - uppdaterad text, ingen rensa-knapp
-with st.sidebar:
-    st.title("🧩 NPF-pusslet")
-    st.markdown("Ställ frågor till boken om vardagsstrategier för barn med ADHD eller autism.")
-
 @st.cache_resource(show_spinner=False)
 def load_index():
     storage_context = StorageContext.from_defaults(persist_dir="./storage")
@@ -40,6 +35,8 @@ st.markdown("")
 st.markdown("""**Pusselfamiljens verktyg för vardagshjältar**  
 *Om barn med ADHD och autism och pusslet som förenklar livet*""")
 st.markdown("---")
+st.write("Ställ frågor till boken om vardagsstrategier för barn med ADHD eller autism.")
+st.write("")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
