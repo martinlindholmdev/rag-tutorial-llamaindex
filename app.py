@@ -1,3 +1,4 @@
+
 import nest_asyncio
 nest_asyncio.apply()
 
@@ -22,13 +23,10 @@ Svara ENDAST baserat på bokens innehåll. Om du inte hittar svaret i boken, sä
 
 st.set_page_config(page_title="NPF-pusslet", page_icon="🧩", layout="centered")
 
+# Sidebar - uppdaterad text, ingen rensa-knapp
 with st.sidebar:
-    st.header("🧩 NPF-pusslet")
-    st.markdown("*Chatta med boken om strategier för vardagen med barn som har ADHD eller autism.*")
-    st.markdown("---")
-    if st.button("🗑️ Rensa chatten"):
-        st.session_state.messages = []
-        st.rerun()
+    st.title("🧩 NPF-pusslet")
+    st.markdown("Ställ frågor till boken om vardagsstrategier för barn med ADHD eller autism.")
 
 @st.cache_resource(show_spinner=False)
 def load_index():
@@ -36,10 +34,10 @@ def load_index():
     index = load_index_from_storage(storage_context)
     return index
 
+# Huvudområde
 st.markdown("# 🧩 NPF-pusslet")
 st.markdown("")
-st.markdown("""Ställ frågor till boken:  
-**Pusselfamiljens verktyg för vardagshjältar**  
+st.markdown("""**Pusselfamiljens verktyg för vardagshjältar**  
 *Om barn med ADHD och autism och pusslet som förenklar livet*""")
 st.markdown("---")
 
