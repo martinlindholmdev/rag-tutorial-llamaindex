@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit secrets (KRITISKT!)
+.streamlit/secrets.toml
+.streamlit/
+
+# Environment
+.env
+venv/
+env/
+
+# Storage (stora filer)
+storage/
+
+# Data (kan innehålla känslig info)
+data/
+
+# VS Code
+.vscode/
+.devcontainer/
+
+# OS
+.DS_Store
+Thumbs.db
