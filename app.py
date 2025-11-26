@@ -38,7 +38,6 @@ st.markdown("""**Pusselfamiljens verktyg för vardagshjältar**
 38    st.write("")
 39    st.write("💬 Fråga boken:")
 40    st.markdown("---")
-st.markdown("---")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
