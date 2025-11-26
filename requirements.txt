@@ -6,3 +6,4 @@ llama-index-embeddings-openai
 openai
 EbookLib
 html2text
+nest_asyncio
